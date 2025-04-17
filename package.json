@@ -14,10 +14,6 @@
     "type": "git",
     "url": "https://github.com/thrightguy/grok-assistant"
   },
-  "activationEvents": [
-    "onCommand:grok-assistant.getSuggestions",
-    "onCommand:grok-assistant.openChat"
-  ],
   "contributes": {
     "commands": [
       {
