@@ -1,23 +1,16 @@
 {
   "name": "grok-assistant",
   "displayName": "Grok Assistant",
-  "description": "A VS Code extension to integrate Grok.com for AI-powered code suggestions.",
+  "description": "AI-powered code suggestions and chat with Grok",
   "version": "0.0.1",
   "engines": {
-    "vscode": "^1.99.0"
+    "vscode": "^1.85.0"
   },
   "categories": [
     "Other"
   ],
-  "main": "./dist/extension.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/thrightguy/grok-assistant"
-  },
-  "activationEvents": [
-    "onCommand:grok-assistant.getSuggestions",
-    "onCommand:grok-assistant.openChat"
-  ],
+  "activationEvents": [],
+  "main": "./extension.js",
   "contributes": {
     "commands": [
       {
@@ -34,60 +27,40 @@
         {
           "id": "grokAssistant",
           "title": "Grok Assistant",
-          "icon": "resources/grok-logo.png"
+          "icon": "./resources/grok-icon.png"
         }
       ]
     },
     "views": {
       "grokAssistant": [
         {
-          "id": "grokChatView",
+          "id": "grokAssistantView",
           "name": "Chat"
         }
       ]
     },
-    "menus": {
-      "view/title": [
-        {
-          "command": "grok-assistant.openChat",
-          "group": "navigation"
+    "configuration": {
+      "title": "Grok Assistant",
+      "properties": {
+        "grokAssistant.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "API key for Grok API (get from ide.x.ai)"
         }
-      ],
-      "commandPalette": [
-        {
-          "command": "grok-assistant.openChat",
-          "group": "navigation"
-        }
-      ]
+      }
     }
   },
   "scripts": {
-    "vscode:prepublish": "npm run package",
-    "compile": "webpack",
-    "watch": "webpack --watch",
-    "package": "webpack --mode production --devtool hidden-source-map",
-    "compile-tests": "tsc -p . --outDir out",
-    "watch-tests": "tsc -p . -w --outDir out",
-    "pretest": "npm run compile-tests && npm run compile && npm run lint",
-    "lint": "eslint src",
-    "test": "vscode-test",
-    "preversion": "npm version patch --no-git-tag-version"
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
   },
   "devDependencies": {
-    "@types/vscode": "^1.99.0",
-    "@types/mocha": "^10.0.10",
-    "@types/node": "20.x",
-    "@typescript-eslint/eslint-plugin": "^8.28.0",
-    "@typescript-eslint/parser": "^8.28.0",
-    "eslint": "^9.23.0",
-    "typescript": "^5.8.2",
-    "ts-loader": "^9.5.2",
-    "webpack": "^5.98.0",
-    "webpack-cli": "^6.0.1",
-    "@vscode/test-cli": "^0.0.10",
-    "@vscode/test-electron": "^2.4.1"
+    "@types/vscode": "^1.85.0",
+    "@types/node": "^16.18.68",
+    "typescript": "^5.3.3"
   },
   "dependencies": {
-    "axios": "^1.4.0"
+    "axios": "^1.6.2"
   }
 }
