@@ -14,15 +14,15 @@
     "type": "git",
     "url": "https://github.com/thrightguy/grok-assistant"
   },
-  "activationEvents": [
-    "onCommand:grok-assistant.getSuggestions",
-    "onCommand:grok-assistant.openChat"
-  ],
   "contributes": {
     "commands": [
       {
         "command": "grok-assistant.getSuggestions",
         "title": "Grok Assistant: Get Suggestions"
+      },
+      {
+        "command": "grok-assistant.openChat",
+        "title": "Grok Assistant: Open Chat"
       }
     ],
     "viewsContainers": {
@@ -66,7 +66,8 @@
     "watch-tests": "tsc -p . -w --outDir out",
     "pretest": "npm run compile-tests && npm run compile && npm run lint",
     "lint": "eslint src",
-    "test": "vscode-test"
+    "test": "vscode-test",
+    "preversion": "npm version patch --no-git-tag-version"
   },
   "devDependencies": {
     "@types/vscode": "^1.99.0",
